@@ -6,11 +6,14 @@ import org.matsim.api.core.v01.events.LinkEnterEvent;
 
 import org.matsim.api.core.v01.events.handler.LinkEnterEventHandler;
 
+import java.io.BufferedWriter;
+import java.io.FileWriter;
+import java.io.IOException;
 import java.util.HashSet;
 import java.util.Set;
 
 
-public class SimpleEventHandler implements LinkEnterEventHandler {
+public class SimpleEventHandler implements LinkEnterEventHandler  {
 
 
     int[] links = {150439, 36874,
@@ -71,5 +74,15 @@ public class SimpleEventHandler implements LinkEnterEventHandler {
 
     public void printVehicle(){
         System.out.println(affectedAgents.size());
+    }
+
+    public  void writeVehicleID () throws IOException{
+        FileWriter fw = new FileWriter("C:/Users/Thien/Desktop/uni/ss2020/matsim/VehicleIDbeforeReduction.txt");
+        BufferedWriter bw = new BufferedWriter(fw);
+
+        bw.write(affectedAgents.toString());
+        bw.newLine();
+
+        bw.close();
     }
 }
